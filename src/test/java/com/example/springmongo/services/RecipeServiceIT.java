@@ -9,6 +9,7 @@ import com.example.springmongo.repositories.RecipeRepository;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
  * @version 1.0
  * @since 27/09/21
  */
+
 @Disabled
-@SpringBootTest
+@DataMongoTest
 public class RecipeServiceIT {
     public static final String NEW_DESCRIPTION = "New Description";
 
@@ -36,7 +38,7 @@ public class RecipeServiceIT {
     @Autowired
     RecipeToRecipeCommand recipeToRecipeCommand;
 
-    @Transactional
+  //  @Transactional
     @Test
     void testSaveOfDescription() throws Exception{
         //given

@@ -47,6 +47,9 @@ public class IngredientServiceImpl implements IngredientService {
 			log.error("recipe id not found. ID: " + ingredientId);
 		}
 
+		IngredientCommand ingredientCommand = ingredientCommandOptional.get();
+		ingredientCommand.setRecipeId(recipe.getId());
+
 		return ingredientCommandOptional.get();
 	}
 
@@ -98,7 +101,12 @@ public class IngredientServiceImpl implements IngredientService {
 			}
 
 			//to do check for fail
-			return ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+			//enhance with id value
+			IngredientCommand ingredientCommandSaved = ingredientToIngredientCommand.convert(savedIngredientOptional.get());
+			assert ingredientCommandSaved != null;
+			ingredientCommandSaved.setRecipeId(recipe.getId());
+
+			return ingredientCommandSaved;
 		}
 
 	}
